@@ -82,6 +82,20 @@
       </ion-col>
       </ion-row>
 
+      <!--<button ion button (click)="takePhoto()">Take Photo</button>
+    <p align="center"><img src="{{ myphoto }}"></p>-->
+
+    <div text-center>
+    <button style="margin-top:10px" ion-button round color="secondary" type="submit" (click)="takePhoto()">Foto del Producto</button>
+    </div>
+
+    <!--<p align="center"><img src="{{ myphoto }}"></p>-->
+   <p> <img src="{{ myphoto }}"/> </p>
+
+    <!--<ion-card class"block">
+			<img src="{{ myphoto }}"/>
+    </ion-card>-->
+
     <div text-center>
     <button style="margin-top:10px" ion-button round color="secondary" type="submit" (click)="postProduct()" [disabled]="!onAddForm.valid">Empezar a vender</button>
     </div>

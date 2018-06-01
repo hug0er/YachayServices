@@ -17,6 +17,11 @@ import { AddproductPage} from '../pages/addproduct/addproduct';
 import { InformationPage} from '../pages/information/information';
 import { HttpModule} from '@angular/http';
 import { AuthProvider } from '../providers/auth/auth';
+import { Camera } from '@ionic-native/camera';
+import { FileTransfer } from '@ionic-native/file-transfer';
+import { File } from '@ionic-native/file';
+
+
 
 @NgModule({
   declarations: [
@@ -54,7 +59,7 @@ import { AuthProvider } from '../providers/auth/auth';
   providers: [
     StatusBar,
     SplashScreen,
-    CategoryService,
+    CategoryService,Camera, FileTransfer, File,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthProvider
   ]

@@ -10,7 +10,7 @@ import { CategoryPage } from '../pages/category/category'
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = WalkthroughPage;
+  rootPage:any = CategoryPage;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {

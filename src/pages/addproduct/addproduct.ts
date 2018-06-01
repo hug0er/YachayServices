@@ -6,6 +6,9 @@ import { CategoryService } from '../../providers/category-service-mock'
 import moment from 'moment';
 import {CategoryPage} from "../category/category";
 
+import { Camera, CameraOptions } from '@ionic-native/camera';
+import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
+import { File } from '@ionic-native/file';
 
 /**
  * Generated class for the AddproductPage page.
@@ -36,7 +39,7 @@ export class AddproductPage {
   todo:any = {}
   public onAddForm : FormGroup;
 
-  constructor(private loadingController: LoadingController, public categoryService: CategoryService, private _fb: FormBuilder, public nav: NavController, public navParams: NavParams, public forgotCtrl: AlertController, public menu: MenuController, public toastCtrl: ToastController,  public http: Http) {
+  constructor(private loadingController: LoadingController, public categoryService: CategoryService, private _fb: FormBuilder, public nav: NavController, public navParams: NavParams, public forgotCtrl: AlertController, public menu: MenuController, public toastCtrl: ToastController,  public http: Http, private camera:Camera, private transfer: FileTransfer, private file: File) {
     this.id_user = this.navParams.get('id_user');
     console.log(this.id_user);
   }
@@ -92,5 +95,24 @@ export class AddproductPage {
       duration: 2000
     });
     toast.present();
+  }
+  myphoto:any;
+  takePhoto(){
+    const options: CameraOptions = {
+      quality: 90,
+      destinationType: this.camera.DestinationType.DATA_URL,
+      encodingType: this.camera.EncodingType.JPEG,
+      mediaType: this.camera.MediaType.PICTURE,
+      correctOrientation: true,
+    }
+    
+    this.camera.getPicture(options).then((imageData) => {
+     // imageData is either a base64 encoded string or a file URI
+     // If it's base64:
+     this.myphoto = 'data:image/jpeg;base64,' + imageData;
+     this.myphoto.reverse();
+    }, (err) => {
+     // Handle error
+    });
   }
 }
